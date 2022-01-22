@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1066087630823",
+    "project_id": "stock-list-db1e7",
+    "storage_bucket": "stock-list-db1e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066087630823:android:91a6e94c844d6121f89f42",
+        "android_client_info": {
+          "package_name": "com.gabeaventh.stock_list"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066087630823-v36n4e3nldscapmk9unjialobqnktuni.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gabeaventh.stock_list",
+            "certificate_hash": "f663906902c9ccfa3371be21ca667a321443ef18"
+          }
+        },
+        {
+          "client_id": "1066087630823-ce5hksbt7uvd1cgs0dp5o2mtmuas6ch9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9wleox5qoyzviExsVU7X7z6vI8j4tco4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1066087630823-ce5hksbt7uvd1cgs0dp5o2mtmuas6ch9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
