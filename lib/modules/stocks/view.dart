@@ -1,0 +1,1 @@
+//TODO: add stocks list page
