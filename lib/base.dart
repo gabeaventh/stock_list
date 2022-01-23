@@ -12,9 +12,35 @@ class AppBase extends StatelessWidget {
     return GetMaterialApp(
       navigatorKey: Get.key,
       navigatorObservers: [GetObserver()],
-      title: 'Music Player',
+      title: 'Stock List',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        backgroundColor: Colors.black54,
+        scaffoldBackgroundColor: Colors.black54,
+        textButtonTheme: TextButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateColor.resolveWith(
+              (states) => Colors.black54,
+            ),
+            foregroundColor: MaterialStateColor.resolveWith(
+              (states) => Colors.white,
+            ),
+            shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
+              (states) => RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+        ),
+        textTheme: TextTheme(
+          button: TextStyle(
+            color: Colors.greenAccent,
+            fontWeight: FontWeight.bold,
+          ),
+          bodyText2: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
 
       /// [AppRoutes.getRoutes] is the routes of the application.
