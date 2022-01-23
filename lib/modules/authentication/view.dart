@@ -21,7 +21,7 @@ class AuthenticationView extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: isLoading
-            ? const CircularProgressIndicator()
+            ? CircularProgressIndicator()
             : isLogin
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
