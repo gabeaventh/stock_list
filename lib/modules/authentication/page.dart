@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stock_list/modules/authentication/bloc/auth_bloc.dart';
@@ -17,21 +16,21 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   @override
   void initState() {
     _i = AuthenticationInitiator()..init(context);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocConsumer(
       bloc: _i.authBloc,
-      builder: (context, state) {
-        User? _user;
-
+      listener: (context, state) {
         if (state is Authenticated) {
-          _user = state.user;
+          _i.onAuthenticated();
         }
+      },
+      builder: (context, state) {
         return AuthenticationView(
-          user: _user,
           isLoading: state is AuthLoading,
           isLogin: state is Authenticated,
           onSignIn: _i.signIn,

@@ -24,6 +24,10 @@ class _$AuthEventTearOff {
   AuthSignOut signout() {
     return const AuthSignOut();
   }
+
+  AuthStatus authStatus() {
+    return const AuthStatus();
+  }
 }
 
 /// @nodoc
@@ -35,18 +39,21 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() signin,
     required TResult Function() signout,
+    required TResult Function() authStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signin,
     TResult Function()? signout,
+    TResult Function()? authStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signin,
     TResult Function()? signout,
+    TResult Function()? authStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,18 +61,21 @@ mixin _$AuthEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthSignIn value) signin,
     required TResult Function(AuthSignOut value) signout,
+    required TResult Function(AuthStatus value) authStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AuthSignIn value)? signin,
     TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthSignIn value)? signin,
     TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +143,7 @@ class _$AuthSignIn with DiagnosticableTreeMixin implements AuthSignIn {
   TResult when<TResult extends Object?>({
     required TResult Function() signin,
     required TResult Function() signout,
+    required TResult Function() authStatus,
   }) {
     return signin();
   }
@@ -142,6 +153,7 @@ class _$AuthSignIn with DiagnosticableTreeMixin implements AuthSignIn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signin,
     TResult Function()? signout,
+    TResult Function()? authStatus,
   }) {
     return signin?.call();
   }
@@ -151,6 +163,7 @@ class _$AuthSignIn with DiagnosticableTreeMixin implements AuthSignIn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signin,
     TResult Function()? signout,
+    TResult Function()? authStatus,
     required TResult orElse(),
   }) {
     if (signin != null) {
@@ -164,6 +177,7 @@ class _$AuthSignIn with DiagnosticableTreeMixin implements AuthSignIn {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthSignIn value) signin,
     required TResult Function(AuthSignOut value) signout,
+    required TResult Function(AuthStatus value) authStatus,
   }) {
     return signin(this);
   }
@@ -173,6 +187,7 @@ class _$AuthSignIn with DiagnosticableTreeMixin implements AuthSignIn {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AuthSignIn value)? signin,
     TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
   }) {
     return signin?.call(this);
   }
@@ -182,6 +197,7 @@ class _$AuthSignIn with DiagnosticableTreeMixin implements AuthSignIn {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthSignIn value)? signin,
     TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
     required TResult orElse(),
   }) {
     if (signin != null) {
@@ -243,6 +259,7 @@ class _$AuthSignOut with DiagnosticableTreeMixin implements AuthSignOut {
   TResult when<TResult extends Object?>({
     required TResult Function() signin,
     required TResult Function() signout,
+    required TResult Function() authStatus,
   }) {
     return signout();
   }
@@ -252,6 +269,7 @@ class _$AuthSignOut with DiagnosticableTreeMixin implements AuthSignOut {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? signin,
     TResult Function()? signout,
+    TResult Function()? authStatus,
   }) {
     return signout?.call();
   }
@@ -261,6 +279,7 @@ class _$AuthSignOut with DiagnosticableTreeMixin implements AuthSignOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? signin,
     TResult Function()? signout,
+    TResult Function()? authStatus,
     required TResult orElse(),
   }) {
     if (signout != null) {
@@ -274,6 +293,7 @@ class _$AuthSignOut with DiagnosticableTreeMixin implements AuthSignOut {
   TResult map<TResult extends Object?>({
     required TResult Function(AuthSignIn value) signin,
     required TResult Function(AuthSignOut value) signout,
+    required TResult Function(AuthStatus value) authStatus,
   }) {
     return signout(this);
   }
@@ -283,6 +303,7 @@ class _$AuthSignOut with DiagnosticableTreeMixin implements AuthSignOut {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(AuthSignIn value)? signin,
     TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
   }) {
     return signout?.call(this);
   }
@@ -292,6 +313,7 @@ class _$AuthSignOut with DiagnosticableTreeMixin implements AuthSignOut {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthSignIn value)? signin,
     TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
     required TResult orElse(),
   }) {
     if (signout != null) {
@@ -306,6 +328,121 @@ abstract class AuthSignOut implements AuthEvent {
 }
 
 /// @nodoc
+abstract class $AuthStatusCopyWith<$Res> {
+  factory $AuthStatusCopyWith(
+          AuthStatus value, $Res Function(AuthStatus) then) =
+      _$AuthStatusCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AuthStatusCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements $AuthStatusCopyWith<$Res> {
+  _$AuthStatusCopyWithImpl(AuthStatus _value, $Res Function(AuthStatus) _then)
+      : super(_value, (v) => _then(v as AuthStatus));
+
+  @override
+  AuthStatus get _value => super._value as AuthStatus;
+}
+
+/// @nodoc
+
+class _$AuthStatus with DiagnosticableTreeMixin implements AuthStatus {
+  const _$AuthStatus();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AuthEvent.authStatus()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'AuthEvent.authStatus'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is AuthStatus);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() signin,
+    required TResult Function() signout,
+    required TResult Function() authStatus,
+  }) {
+    return authStatus();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? signin,
+    TResult Function()? signout,
+    TResult Function()? authStatus,
+  }) {
+    return authStatus?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? signin,
+    TResult Function()? signout,
+    TResult Function()? authStatus,
+    required TResult orElse(),
+  }) {
+    if (authStatus != null) {
+      return authStatus();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthSignIn value) signin,
+    required TResult Function(AuthSignOut value) signout,
+    required TResult Function(AuthStatus value) authStatus,
+  }) {
+    return authStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AuthSignIn value)? signin,
+    TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
+  }) {
+    return authStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthSignIn value)? signin,
+    TResult Function(AuthSignOut value)? signout,
+    TResult Function(AuthStatus value)? authStatus,
+    required TResult orElse(),
+  }) {
+    if (authStatus != null) {
+      return authStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthStatus implements AuthEvent {
+  const factory AuthStatus() = _$AuthStatus;
+}
+
+/// @nodoc
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
@@ -317,10 +454,8 @@ class _$AuthStateTearOff {
     return const AuthLoading();
   }
 
-  Authenticated authenticated(User user) {
-    return Authenticated(
-      user,
-    );
+  Authenticated authenticated() {
+    return const Authenticated();
   }
 
   AuthLoggedOut loggedOut() {
@@ -343,7 +478,7 @@ mixin _$AuthState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() loggedOut,
     required TResult Function(NetworkError? error) error,
   }) =>
@@ -352,7 +487,7 @@ mixin _$AuthState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
   }) =>
@@ -361,7 +496,7 @@ mixin _$AuthState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
     required TResult orElse(),
@@ -460,7 +595,7 @@ class _$AuthInitial with DiagnosticableTreeMixin implements AuthInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() loggedOut,
     required TResult Function(NetworkError? error) error,
   }) {
@@ -472,7 +607,7 @@ class _$AuthInitial with DiagnosticableTreeMixin implements AuthInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
   }) {
@@ -484,7 +619,7 @@ class _$AuthInitial with DiagnosticableTreeMixin implements AuthInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
     required TResult orElse(),
@@ -588,7 +723,7 @@ class _$AuthLoading with DiagnosticableTreeMixin implements AuthLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() loggedOut,
     required TResult Function(NetworkError? error) error,
   }) {
@@ -600,7 +735,7 @@ class _$AuthLoading with DiagnosticableTreeMixin implements AuthLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
   }) {
@@ -612,7 +747,7 @@ class _$AuthLoading with DiagnosticableTreeMixin implements AuthLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
     required TResult orElse(),
@@ -673,7 +808,6 @@ abstract class $AuthenticatedCopyWith<$Res> {
   factory $AuthenticatedCopyWith(
           Authenticated value, $Res Function(Authenticated) then) =
       _$AuthenticatedCopyWithImpl<$Res>;
-  $Res call({User user});
 }
 
 /// @nodoc
@@ -685,68 +819,43 @@ class _$AuthenticatedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
   @override
   Authenticated get _value => super._value as Authenticated;
-
-  @override
-  $Res call({
-    Object? user = freezed,
-  }) {
-    return _then(Authenticated(
-      user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$Authenticated with DiagnosticableTreeMixin implements Authenticated {
-  const _$Authenticated(this.user);
-
-  @override
-  final User user;
+  const _$Authenticated();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthState.authenticated(user: $user)';
+    return 'AuthState.authenticated()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthState.authenticated'))
-      ..add(DiagnosticsProperty('user', user));
+    properties..add(DiagnosticsProperty('type', 'AuthState.authenticated'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is Authenticated &&
-            const DeepCollectionEquality().equals(other.user, user));
+        (other.runtimeType == runtimeType && other is Authenticated);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
-
-  @JsonKey(ignore: true)
-  @override
-  $AuthenticatedCopyWith<Authenticated> get copyWith =>
-      _$AuthenticatedCopyWithImpl<Authenticated>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() loggedOut,
     required TResult Function(NetworkError? error) error,
   }) {
-    return authenticated(user);
+    return authenticated();
   }
 
   @override
@@ -754,11 +863,11 @@ class _$Authenticated with DiagnosticableTreeMixin implements Authenticated {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
   }) {
-    return authenticated?.call(user);
+    return authenticated?.call();
   }
 
   @override
@@ -766,13 +875,13 @@ class _$Authenticated with DiagnosticableTreeMixin implements Authenticated {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
-      return authenticated(user);
+      return authenticated();
     }
     return orElse();
   }
@@ -819,12 +928,7 @@ class _$Authenticated with DiagnosticableTreeMixin implements Authenticated {
 }
 
 abstract class Authenticated implements AuthState {
-  const factory Authenticated(User user) = _$Authenticated;
-
-  User get user;
-  @JsonKey(ignore: true)
-  $AuthenticatedCopyWith<Authenticated> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory Authenticated() = _$Authenticated;
 }
 
 /// @nodoc
@@ -875,7 +979,7 @@ class _$AuthLoggedOut with DiagnosticableTreeMixin implements AuthLoggedOut {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() loggedOut,
     required TResult Function(NetworkError? error) error,
   }) {
@@ -887,7 +991,7 @@ class _$AuthLoggedOut with DiagnosticableTreeMixin implements AuthLoggedOut {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
   }) {
@@ -899,7 +1003,7 @@ class _$AuthLoggedOut with DiagnosticableTreeMixin implements AuthLoggedOut {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
     required TResult orElse(),
@@ -1027,7 +1131,7 @@ class _$AuthError with DiagnosticableTreeMixin implements AuthError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(User user) authenticated,
+    required TResult Function() authenticated,
     required TResult Function() loggedOut,
     required TResult Function(NetworkError? error) error,
   }) {
@@ -1039,7 +1143,7 @@ class _$AuthError with DiagnosticableTreeMixin implements AuthError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
   }) {
@@ -1051,7 +1155,7 @@ class _$AuthError with DiagnosticableTreeMixin implements AuthError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(User user)? authenticated,
+    TResult Function()? authenticated,
     TResult Function()? loggedOut,
     TResult Function(NetworkError? error)? error,
     required TResult orElse(),
