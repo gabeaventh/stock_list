@@ -1,6 +1,8 @@
 import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:package_info/package_info.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:stock_list/base.dart';
 import 'package:stock_list/core/env/env.dart';
 import 'package:stock_list/core/logger/log.dart';
@@ -17,6 +19,7 @@ class InitApp extends StatefulWidget {
 
 class _InitAppState extends State<InitApp> {
   Future init() async {
+    Hive.init("${(await getApplicationDocumentsDirectory()).path}/hive");
     DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
     PackageInfo _packageInfo = await PackageInfo.fromPlatform();
     AndroidDeviceInfo _android = await _deviceInfo.androidInfo;
@@ -50,7 +53,7 @@ class _InitAppState extends State<InitApp> {
           }
           return const AppBase();
         }
-        return Container();
+        return CircularProgressIndicator();
       },
     );
   }
