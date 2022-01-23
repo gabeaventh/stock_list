@@ -5,8 +5,10 @@ class Env {
   static Env? get instance => _instance ??= Env._();
 
   late String baseUrl;
+  late String token;
 
   initEnv() {
-    baseUrl = "https://itunes.apple.com";
+    baseUrl = "https://finnhub.io/api/v1";
+    token = "sandbox_c7mrmv2ad3iabvejlju0";
   }
 }
