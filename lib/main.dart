@@ -14,7 +14,10 @@ void main() {
         WidgetsFlutterBinding.ensureInitialized();
         await Firebase.initializeApp();
         runApp(InitApp());
-      }, (e, s) {});
+      }, (e, s) {
+        debugPrint('Error: $e');
+        debugPrint('StackTrace: $s');
+      });
     },
     blocObserver: BlocLogger(),
   );
