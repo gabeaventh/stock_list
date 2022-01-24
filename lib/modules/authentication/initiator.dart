@@ -1,6 +1,7 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:stock_list/core/core_initiator.dart';
+import 'package:stock_list/core/network/error/network_error.dart';
 import 'package:stock_list/modules/authentication/bloc/auth_bloc.dart';
 import 'package:stock_list/modules/authentication/service/service.dart';
 import 'package:stock_list/routes/routes_name.dart';
@@ -11,6 +12,8 @@ abstract class IAuthenticationInitiator extends CoreInitiator {
   void signOut();
 
   void onAuthenticated();
+
+  void onError(NetworkError error);
 
   AuthBloc get authBloc;
 }
@@ -43,5 +46,16 @@ class AuthenticationInitiator implements IAuthenticationInitiator {
   @override
   void onAuthenticated() {
     Get.offNamed(Routes.HOME);
+  }
+
+  @override
+  void onError(NetworkError? error) {
+    if (error?.message.toLowerCase().contains("something is wrong") == true) {
+      return;
+    }
+    Get.showSnackbar(GetSnackBar(
+      title: "Sign In Error",
+      message: error?.message ?? "Error While Signin",
+    ));
   }
 }

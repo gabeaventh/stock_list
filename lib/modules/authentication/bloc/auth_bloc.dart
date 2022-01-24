@@ -15,30 +15,36 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthInitial()) {
     on<AuthEvent>((event, emit) async {
       if (event is AuthSignIn) {
-        var _box = await Saver.open;
+        try {
+          var _box = await Saver.open;
+          emit(const AuthLoading());
+          UserCredential _user =
+              await AuthenticationService.instance.signInWithGithub();
 
-        emit(const AuthLoading());
-        UserCredential _user =
-            await AuthenticationService.instance.signInWithGithub();
-
-        if (_user.user == null) {
-          emit(
-            AuthError(
-              error: NetworkError(
-                "Sign in failed, User Not Found",
-                NetworkErrorType.validationFailed,
+          if (_user.user == null) {
+            emit(
+              AuthError(
+                error: NetworkError(
+                  "Sign in failed, User Not Found",
+                  NetworkErrorType.validationFailed,
+                ),
               ),
-            ),
-          );
-          return;
+            );
+            return;
+          }
+          _box.putAll({
+            'name': _user.user?.displayName,
+            'email': _user.user?.email,
+            'username': _user.user?.email?.split("@")[0],
+            'authToken': _user.credential?.token,
+          });
+          emit(Authenticated());
+        } on FirebaseAuthException catch (e) {
+          emit(AuthState.error(
+              error: NetworkError(e.message ?? "Something is Wrong")));
+        } catch (e) {
+          emit(AuthState.error(error: NetworkError(e.toString())));
         }
-        _box.putAll({
-          'name': _user.user?.displayName,
-          'email': _user.user?.email,
-          'username': _user.user?.email?.split("@")[0],
-          'authToken': _user.credential?.token,
-        });
-        emit(Authenticated());
       } else if (event is AuthSignOut) {
         emit(const AuthLoading());
         var _box = await Saver.open;

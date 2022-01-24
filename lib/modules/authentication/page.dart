@@ -34,6 +34,9 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         if (state is Authenticated) {
           _i.onAuthenticated();
         }
+        if (state is AuthError) {
+          _i.onError(state.error!);
+        }
       },
       builder: (context, state) {
         return AuthenticationView(
