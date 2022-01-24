@@ -19,9 +19,7 @@ class AuthenticationInitiator implements IAuthenticationInitiator {
   late AuthBloc _authBloc;
 
   @override
-  void dispose() {
-    _authBloc.close();
-  }
+  void dispose() {}
 
   @override
   void init(BuildContext context) {
