@@ -14,19 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "1066087630823-18tgpvgrccdlgpluqnk0ruh9tcqajmhs.apps.googleusercontent.com",
+          "client_id": "1066087630823-3jr2890jbod2f37m0mfvchoijpb2nj4u.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.gabeaventh.stock_list",
-            "certificate_hash": "70a67bbe3a353dee4f105d802cc39865f32cd615"
-          }
-        },
-        {
-          "client_id": "1066087630823-j23nq2h6ivfilg27jd6l5a5rn1q18657.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.gabeaventh.stock_list",
-            "certificate_hash": "f499743cc8baace8a70f08ca107cfe3957257161"
+            "certificate_hash": "fe6ef863b5376897e6fa4d3ef1fc41d040ec1778"
           }
         },
         {
