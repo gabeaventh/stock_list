@@ -11,12 +11,12 @@ class AppRoutes {
     GetPage(
       name: Routes.APP,
       page: AuthenticationPage.new,
-      binding: AuthenticationBinding(),
+      binding: AppBinding(),
     ),
     GetPage(
       name: Routes.HOME,
       page: HomePage.new,
-      binding: HomeBinding(),
+      binding: AppBinding(),
     ),
   ];
 }
