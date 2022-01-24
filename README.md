@@ -2,6 +2,11 @@
 
 A new Flutter project.
 
+## Unsound Null Safety
+this app runs with unsound null safety
+because of github sign in dependencies
+have not migrating the package
+
 ### Commands
 to run the app from console:
 ```
