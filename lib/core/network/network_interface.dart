@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:stock_list/core/env/env.dart';
@@ -39,7 +37,7 @@ class NetworkInterface {
           .then((jsonResponse) => Left(
                 NetworkModel(
                   code: jsonResponse.statusCode,
-                  response: jsonDecode(jsonResponse.data),
+                  response: jsonResponse.data,
                 ),
               ));
     } on DioError catch (e, s) {
