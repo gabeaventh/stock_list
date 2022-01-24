@@ -14,10 +14,7 @@ class AccountInitiator implements IAccountInitiator {
   late AccountInfoCubit _accountCubit;
   late AuthBloc _authBloc;
   @override
-  void dispose() {
-    _accountCubit.close();
-    _authBloc.close();
-  }
+  void dispose() {}
 
   @override
   void init(BuildContext context) {

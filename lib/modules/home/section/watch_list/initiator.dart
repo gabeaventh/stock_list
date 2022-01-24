@@ -17,10 +17,7 @@ class WatchListInitiator implements IWatchListInitiator {
   late WatchListCubit _watchCubit;
   late ReorderListCubit _reorderCubit;
   @override
-  void dispose() {
-    _watchCubit.close();
-    _reorderCubit.close();
-  }
+  void dispose() {}
 
   @override
   void init(BuildContext context) {

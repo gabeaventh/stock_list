@@ -16,10 +16,7 @@ class StockListInitiator implements IStockListInitiator {
   late StockListCubit _stockListCubit;
   late StockFavoriteCubit _favCubit;
   @override
-  void dispose() {
-    _stockListCubit.close();
-    _favCubit.close();
-  }
+  void dispose() {}
 
   @override
   void init(BuildContext context) {

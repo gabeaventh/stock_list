@@ -17,9 +17,7 @@ abstract class IHomeInitiator extends CoreInitiator {
 class HomeInitiator implements IHomeInitiator {
   late HomeTabCubit _homeTabCubit;
   @override
-  void dispose() {
-    _homeTabCubit.close();
-  }
+  void dispose() {}
 
   @override
   void init(BuildContext context) {
