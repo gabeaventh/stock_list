@@ -14,21 +14,23 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async => false,
-      child: Scaffold(
-        body: tabItems[currentIndex].content,
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: currentIndex,
-          items: [
-            for (var i = 0; i < tabItems.length; i++) ...{
-              BottomNavigationBarItem(
-                icon: Icon(tabItems[i].icon),
-                label: tabItems[i].title,
-              ),
-            }
-          ],
-          onTap: onTap,
+    return SafeArea(
+      child: WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          body: tabItems[currentIndex].content,
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: currentIndex,
+            items: [
+              for (var i = 0; i < tabItems.length; i++) ...{
+                BottomNavigationBarItem(
+                  icon: Icon(tabItems[i].icon),
+                  label: tabItems[i].title,
+                ),
+              }
+            ],
+            onTap: onTap,
+          ),
         ),
       ),
     );
