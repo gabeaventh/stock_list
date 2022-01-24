@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:stock_list/core/core_initiator.dart';
 import 'package:stock_list/modules/home/cubit/home_tab_cubit.dart';
 import 'package:stock_list/modules/home/data/data.dart';
 import 'package:stock_list/modules/home/section/account/page.dart';
+import 'package:stock_list/modules/home/section/stocks/page.dart';
+import 'package:stock_list/modules/home/section/watch_list/page.dart';
 
 abstract class IHomeInitiator extends CoreInitiator {
   List<HomeSectionTabItem> get tabItems;
@@ -32,16 +35,16 @@ class HomeInitiator implements IHomeInitiator {
           icon: Icons.account_box_rounded,
         ),
         HomeSectionTabItem(
-          title: "Stock List",
-          content: Container(),
+          title: "Stock",
+          content: StockListPage(),
           type: HomeSectionType.stockList,
           icon: Icons.waterfall_chart,
         ),
         HomeSectionTabItem(
           title: "Watch List",
-          content: Container(),
+          content: WatchListPage(),
           type: HomeSectionType.watchList,
-          icon: Icons.favorite,
+          icon: FontAwesomeIcons.binoculars,
         ),
       ];
 
