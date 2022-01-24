@@ -6,3 +6,6 @@ run:
 
 apk:
 	@flutter build apk --no-sound-null-safety
+
+btest:
+	@flutter test --no-sound-null-safety
