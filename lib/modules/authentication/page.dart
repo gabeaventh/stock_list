@@ -21,6 +21,12 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   }
 
   @override
+  void dispose() {
+    _i.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer(
       bloc: _i.authBloc,
