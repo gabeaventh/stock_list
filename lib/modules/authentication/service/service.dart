@@ -12,12 +12,18 @@ abstract class IAuthenticationService {
 
 class AuthenticationService implements IAuthenticationService {
   FirebaseAuth _firebase;
-  AuthenticationService._({FirebaseAuth? firebase})
+  GoogleSignIn _googleSignIn;
+  AuthenticationService({FirebaseAuth? firebase, GoogleSignIn? google})
       : _firebase = firebase ?? FirebaseAuth.instance,
+        _googleSignIn = google ??
+            GoogleSignIn(scopes: [
+              'profile',
+              'https://www.googleapis.com/auth/userinfo.profile',
+            ]),
         super();
 
   static AuthenticationService get instance {
-    return AuthenticationService._();
+    return AuthenticationService();
   }
 
   /// Sign Out with from signed provider
@@ -27,10 +33,7 @@ class AuthenticationService implements IAuthenticationService {
   /// Sign in With Google
   @override
   Future<UserCredential> signInWithGoogle() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn(scopes: [
-      'profile',
-      'https://www.googleapis.com/auth/userinfo.profile',
-    ]).signIn();
+    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
@@ -62,10 +65,8 @@ class AuthenticationService implements IAuthenticationService {
 
   @override
   Future<UserCredential> signInSilently() async {
-    final GoogleSignInAccount? googleUser = await GoogleSignIn(scopes: [
-      'profile',
-      'https://www.googleapis.com/auth/userinfo.profile',
-    ]).signInSilently();
+    final GoogleSignInAccount? googleUser =
+        await _googleSignIn.signInSilently();
 
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
