@@ -7,7 +7,7 @@ import 'package:stock_list/core/network/network_model.dart';
 class StocksService extends CoreRestService {
   Future<Either<NetworkModel, NetworkError>> searchForJkSymbols() {
     return network.get(
-      path: '/stock/symbol?',
+      path: '/stock/symbol',
       queryParameters: {
         "exchange": "JK",
         "token": Env.instance?.token,

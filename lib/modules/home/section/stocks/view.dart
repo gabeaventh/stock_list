@@ -1,26 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:stock_list/modules/home/section/stocks/data/stock_list.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stock_list/modules/home/section/stocks/data/stock.dart';
+import 'package:stock_list/widgets/loading_overlay.dart';
 
 class StockListView extends StatelessWidget {
-  final StockList stockList;
+  final List<Stock>? stockList;
+  final List<String>? favIds;
+  final void Function(String) onFav;
+  final bool isLoading;
+  final bool? hasMore;
+  final bool Function(ScrollNotification) onLoadMore;
+
   const StockListView({
     Key? key,
-    required this.stockList,
+    this.stockList,
+    this.favIds,
+    required this.onFav,
+    this.isLoading = false,
+    this.hasMore = true,
+    required this.onLoadMore,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ListView.builder(itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            title: Text('Stock $index'),
-            subtitle: Text('Stock $index'),
-            leading: Icon(Icons.add_circle),
-            trailing: Icon(Icons.remove_circle),
+    return NotificationListener(
+      onNotification: onLoadMore,
+      child: Stack(
+        children: [
+          Center(
+            child: ListView.builder(
+                itemCount: (stockList?.length ?? 0) + (hasMore! ? 1 : 0),
+                itemBuilder: (context, index) {
+                  if (stockList?.length == 0) return Container();
+                  if (hasMore! && index == stockList?.length) {
+                    return Container(
+                      height: 40,
+                      width: 40,
+                      margin: EdgeInsets.symmetric(vertical: 16.0),
+                      alignment: Alignment.center,
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Card(
+                    child: ListTile(
+                      title: Text('${stockList?[index].description}'),
+                      subtitle: Text('${stockList?[index].type}'),
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        child: Text('${stockList?[index].symbol}'),
+                      ),
+                      trailing: IconButton(
+                        icon: FaIcon(
+                          FontAwesomeIcons.binoculars,
+                          color: favIds!.contains(stockList![index].symbol)
+                              ? Colors.blue
+                              : null,
+                        ),
+                        onPressed: () {
+                          onFav(stockList![index].symbol!);
+                        },
+                      ),
+                    ),
+                  );
+                }),
           ),
-        );
-      }),
+          if (isLoading) LoadingOverlay()
+        ],
+      ),
     );
   }
 }

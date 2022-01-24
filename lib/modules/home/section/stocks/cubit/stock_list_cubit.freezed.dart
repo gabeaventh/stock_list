@@ -25,9 +25,12 @@ class _$StockListStateTearOff {
     return const StockListLoading();
   }
 
-  StockListLoaded loaded(StockList stocks) {
+  StockListLoaded loaded(
+      {List<Stock>? stockList, bool? hasMore, List<Stock>? currentList}) {
     return StockListLoaded(
-      stocks,
+      stockList: stockList,
+      hasMore: hasMore,
+      currentList: currentList,
     );
   }
 
@@ -47,7 +50,9 @@ mixin _$StockListState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StockList stocks) loaded,
+    required TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)
+        loaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -55,7 +60,9 @@ mixin _$StockListState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +70,9 @@ mixin _$StockListState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -155,7 +164,9 @@ class _$StockListInitial implements StockListInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StockList stocks) loaded,
+    required TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -166,7 +177,9 @@ class _$StockListInitial implements StockListInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
   }) {
     return initial?.call();
@@ -177,7 +190,9 @@ class _$StockListInitial implements StockListInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -272,7 +287,9 @@ class _$StockListLoading implements StockListLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StockList stocks) loaded,
+    required TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -283,7 +300,9 @@ class _$StockListLoading implements StockListLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
   }) {
     return loading?.call();
@@ -294,7 +313,9 @@ class _$StockListLoading implements StockListLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -351,7 +372,7 @@ abstract class $StockListLoadedCopyWith<$Res> {
   factory $StockListLoadedCopyWith(
           StockListLoaded value, $Res Function(StockListLoaded) then) =
       _$StockListLoadedCopyWithImpl<$Res>;
-  $Res call({StockList stocks});
+  $Res call({List<Stock>? stockList, bool? hasMore, List<Stock>? currentList});
 }
 
 /// @nodoc
@@ -367,13 +388,23 @@ class _$StockListLoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? stocks = freezed,
+    Object? stockList = freezed,
+    Object? hasMore = freezed,
+    Object? currentList = freezed,
   }) {
     return _then(StockListLoaded(
-      stocks == freezed
-          ? _value.stocks
-          : stocks // ignore: cast_nullable_to_non_nullable
-              as StockList,
+      stockList: stockList == freezed
+          ? _value.stockList
+          : stockList // ignore: cast_nullable_to_non_nullable
+              as List<Stock>?,
+      hasMore: hasMore == freezed
+          ? _value.hasMore
+          : hasMore // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      currentList: currentList == freezed
+          ? _value.currentList
+          : currentList // ignore: cast_nullable_to_non_nullable
+              as List<Stock>?,
     ));
   }
 }
@@ -381,14 +412,18 @@ class _$StockListLoadedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StockListLoaded implements StockListLoaded {
-  const _$StockListLoaded(this.stocks);
+  const _$StockListLoaded({this.stockList, this.hasMore, this.currentList});
 
   @override
-  final StockList stocks;
+  final List<Stock>? stockList;
+  @override
+  final bool? hasMore;
+  @override
+  final List<Stock>? currentList;
 
   @override
   String toString() {
-    return 'StockListState.loaded(stocks: $stocks)';
+    return 'StockListState.loaded(stockList: $stockList, hasMore: $hasMore, currentList: $currentList)';
   }
 
   @override
@@ -396,12 +431,18 @@ class _$StockListLoaded implements StockListLoaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is StockListLoaded &&
-            const DeepCollectionEquality().equals(other.stocks, stocks));
+            const DeepCollectionEquality().equals(other.stockList, stockList) &&
+            const DeepCollectionEquality().equals(other.hasMore, hasMore) &&
+            const DeepCollectionEquality()
+                .equals(other.currentList, currentList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(stocks));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(stockList),
+      const DeepCollectionEquality().hash(hasMore),
+      const DeepCollectionEquality().hash(currentList));
 
   @JsonKey(ignore: true)
   @override
@@ -413,10 +454,12 @@ class _$StockListLoaded implements StockListLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StockList stocks) loaded,
+    required TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)
+        loaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(stocks);
+    return loaded(stockList, hasMore, currentList);
   }
 
   @override
@@ -424,10 +467,12 @@ class _$StockListLoaded implements StockListLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
   }) {
-    return loaded?.call(stocks);
+    return loaded?.call(stockList, hasMore, currentList);
   }
 
   @override
@@ -435,12 +480,14 @@ class _$StockListLoaded implements StockListLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(stocks);
+      return loaded(stockList, hasMore, currentList);
     }
     return orElse();
   }
@@ -484,9 +531,14 @@ class _$StockListLoaded implements StockListLoaded {
 }
 
 abstract class StockListLoaded implements StockListState {
-  const factory StockListLoaded(StockList stocks) = _$StockListLoaded;
+  const factory StockListLoaded(
+      {List<Stock>? stockList,
+      bool? hasMore,
+      List<Stock>? currentList}) = _$StockListLoaded;
 
-  StockList get stocks;
+  List<Stock>? get stockList;
+  bool? get hasMore;
+  List<Stock>? get currentList;
   @JsonKey(ignore: true)
   $StockListLoadedCopyWith<StockListLoaded> get copyWith =>
       throw _privateConstructorUsedError;
@@ -559,7 +611,9 @@ class _$StockListError implements StockListError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(StockList stocks) loaded,
+    required TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)
+        loaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -570,7 +624,9 @@ class _$StockListError implements StockListError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
   }) {
     return error?.call(message);
@@ -581,7 +637,9 @@ class _$StockListError implements StockListError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(StockList stocks)? loaded,
+    TResult Function(
+            List<Stock>? stockList, bool? hasMore, List<Stock>? currentList)?
+        loaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
