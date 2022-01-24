@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
+import 'package:github_sign_in/github_sign_in.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class IAuthenticationService {
@@ -8,6 +10,7 @@ abstract class IAuthenticationService {
   Future<bool> isSignedIn();
   User? getCurrentUser();
   Future<UserCredential> signInSilently();
+  Future<UserCredential> signInWithGithub();
 }
 
 class AuthenticationService implements IAuthenticationService {
@@ -82,5 +85,23 @@ class AuthenticationService implements IAuthenticationService {
   Future<DateTime?> getLastOnlineTime() async {
     final User? user = await _firebase.currentUser;
     return user?.metadata.lastSignInTime;
+  }
+
+  @override
+  Future<UserCredential> signInWithGithub() async {
+    // Create a GitHubSignIn instance
+    final GitHubSignIn gitHubSignIn = GitHubSignIn(
+        clientId: "8dbc153653cf640d558d",
+        clientSecret: "bbf9f7ccb446b9c91e49cdef592c0e4599206aa4",
+        redirectUrl:
+            'https://stock-list-db1e7.firebaseapp.com/__/auth/handler');
+
+    // Trigger the sign-in flow
+    final result = await gitHubSignIn.signIn(Get.context);
+
+    // Create a credential from the access token
+    final githubAuthCredential = GithubAuthProvider.credential(result.token);
+
+    return await _firebase.signInWithCredential(githubAuthCredential);
   }
 }

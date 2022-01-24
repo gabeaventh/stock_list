@@ -357,6 +357,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_webview_plugin:
+    dependency: transitive
+    description:
+      name: flutter_webview_plugin
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.11"
   font_awesome_flutter:
     dependency: "direct main"
     description:
@@ -397,6 +404,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.1"
+  github_sign_in:
+    dependency: "direct main"
+    description:
+      name: github_sign_in
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.4"
   glob:
     dependency: transitive
     description:
@@ -446,6 +460,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.2"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.4"
   http_multi_server:
     dependency: transitive
     description:

@@ -19,7 +19,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         emit(const AuthLoading());
         UserCredential _user =
-            await AuthenticationService.instance.signInWithGoogle();
+            await AuthenticationService.instance.signInWithGithub();
 
         if (_user.user == null) {
           emit(
