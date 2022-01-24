@@ -17,6 +17,14 @@ class BlocLogger extends BlocObserver {
   }
 
   @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    if (!excludeBlocName.contains(_removeInstanceOf(bloc.toString()))) {
+      Log.warning(TAG, 'On Change: $change');
+    }
+  }
+
+  @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
     if (!excludeBlocName.contains(_removeInstanceOf(bloc.toString()))) {
