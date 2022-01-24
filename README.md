@@ -11,6 +11,9 @@ have not migrating the package
 to run the app from console:
 ```
 make run
+or
+make run mode=release
+
 ```
 
 to build the apk:
@@ -28,3 +31,4 @@ to run the unit test:
 ```
 make btest
 ```
+
